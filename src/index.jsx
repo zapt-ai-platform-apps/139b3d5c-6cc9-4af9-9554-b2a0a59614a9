@@ -2,6 +2,7 @@ import { render } from 'solid-js/web';
 import App from './App';
 import './index.css';
 import * as Sentry from "@sentry/browser";
+import { Router } from '@solidjs/router';
 
 Sentry.init({
   dsn: import.meta.env.VITE_PUBLIC_SENTRY_DSN,
@@ -27,4 +28,8 @@ script.setAttribute('src', `https://progressier.app/${import.meta.env.VITE_PUBLI
 script.setAttribute('defer', 'true');
 document.querySelector('head').appendChild(script);
 
-render(() => <App />, document.getElementById('root'));
+render(() => (
+  <Router>
+    <App />
+  </Router>
+), document.getElementById('root'));
